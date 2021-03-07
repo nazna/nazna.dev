@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  font-weight: 400;
+  font-family: Poppins, sans-serif;
+}
+
+.avatar > img {
+  border-radius: 50%;
+}
+
+.blog {
+  color: var(--base-fg);
+  font-size: 18px;
+}

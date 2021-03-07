@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  padding: 24px;
+  font-weight: 400;
+  font-family: Poppins, sans-serif;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 24px;
+  fill: var(--base-fg);
+}
