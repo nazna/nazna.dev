@@ -15,9 +15,6 @@ export function Profile() {
           &mdash; also a gamer, reader, sleeper.
         </p>
         <p>I'm currently a Node.js engineer.</p>
-        <p>
-          I write my thoughts on <a href="//blog.nazna.dev">here</a>.
-        </p>
       </section>
     </main>
   )
