@@ -1,4 +1,4 @@
-import styles from './style.module.css'
+import styles from '../styles/index.module.css'
 
 export function Profile() {
   return (
@@ -10,11 +10,10 @@ export function Profile() {
       </h1>
       <section className={styles.description}>
         <p>
-          Web application engineer in Tokyo.
+          Web application engineer in Japan.
           <br />
-          &mdash; also a gamer, reader, sleeper.
+          &mdash; also a gamer, reader and sleeper.
         </p>
-        <p>I'm currently a Node.js engineer.</p>
       </section>
     </main>
   )

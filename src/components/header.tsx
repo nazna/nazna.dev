@@ -1,4 +1,4 @@
-import styles from './style.module.css'
+import styles from '../styles/index.module.css'
 
 export function Header() {
   return (
