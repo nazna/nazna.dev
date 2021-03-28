@@ -1,0 +1,6 @@
+<svg width="128" height="128" xmlns="http://www.w3.org/2000/svg">
+  <clipPath id="circle">
+    <circle r="64" cx="64" cy="64"/>
+  </clipPath>
+  <image width="128" height="128" href="avatar.png" clip-path="url(#circle)" />
+</svg>
