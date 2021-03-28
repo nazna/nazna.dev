@@ -1,6 +1,13 @@
 .container {
-  padding: 24px;
-  font-family: Poppins, sans-serif;
+  padding-top: 32px;
+  padding-right: max(24px, calc(10vw + 1rem));
+  padding-bottom: 32px;
+  padding-left: max(24px, calc(10vw + 1rem));
+  font-family: Montserrat, sans-serif;
+}
+
+.header {
+  padding-top: clamp(24px, calc(10vw + 1rem), 72px);
 }
 
 .avatar > img {
@@ -8,7 +15,6 @@
 }
 
 .sparkle {
-  margin-top: 48px;
   margin-bottom: 48px;
   font-weight: 600;
   font-size: clamp(24px, 10vw + 1rem, 80px);
@@ -24,16 +30,10 @@
   width: 32px;
   height: 32px;
   margin-right: 32px;
+  transition: fill 0.24s ease-in-out;
   fill: var(--base-fg);
 }
 
-@media screen and (min-width: 768px) {
-  .container {
-    padding: 64px 64px 48px 64px;
-  }
-
-  .sparkle {
-    margin-top: 24px;
-    margin-bottom: 24px;
-  }
+.icon:hover {
+  fill: var(--main);
 }

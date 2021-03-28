@@ -13,6 +13,10 @@
   box-sizing: border-box;
 }
 
+::selection {
+  background-color: var(--main);
+}
+
 body,
 h1,
 h2,
@@ -42,7 +46,6 @@ body {
   background: var(--base-bg);
   text-rendering: optimizeSpeed;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
 a:not([class]) {
