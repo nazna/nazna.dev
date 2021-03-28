@@ -1,5 +1,6 @@
-.next
-node_modules/
+.DS_Store
+node_modules
 npm-debug.log*
-out/
-package-lock.json
+.next
+out
+.firebaserc

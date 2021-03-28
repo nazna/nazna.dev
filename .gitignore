@@ -1,5 +1,6 @@
 .DS_Store
-.next
-node_modules/
+node_modules
 npm-debug.log*
-out/
+.next
+out
+.firebaserc
