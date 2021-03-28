@@ -12,7 +12,8 @@ export default class Document extends NextDocument {
           <link rel="manifest" href="nazna.dev.webmanifest" />
           <link rel="preconnect" href="//fonts.gstatic.com" />
           <link rel="stylesheet" href="//fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" />
-          <title>nazna.dev</title>
+          <script src="/__/firebase/8.3.1/firebase-app.js"></script>
+          <script src="/__/firebase/init.js"></script>
         </Head>
         <body>
           <noscript>You need to enable JavaScript to run this app.</noscript>
