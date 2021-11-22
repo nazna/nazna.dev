@@ -5,6 +5,9 @@
 node_modules
 npm-debug.log*
 
+# typescript
+tsconfig.tsbuildinfo
+
 # next.js
 .next
 out

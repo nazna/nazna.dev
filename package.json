@@ -6,12 +6,12 @@
   "license": "MIT",
   "author": "nazna <naznagg@gmail.com> (https://github.com/nazna)",
   "scripts": {
-    "dev": "next dev",
     "build": "next build && next export",
-    "start": "next start",
+    "dev": "next dev",
+    "format": "prettier --write .",
     "lint": "npm run typecheck && npm run format",
-    "typecheck": "tsc --noEmit",
-    "format": "prettier --write ."
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
   },
   "prettier": {
     "printWidth": 120,
