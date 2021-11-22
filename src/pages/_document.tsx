@@ -10,8 +10,8 @@ export default class Document extends NextDocument {
           <meta name="apple-mobile-web-app-title" content="nazna.dev" />
           <link rel="icon" type="image/svg+xml" href="favicon.svg" />
           <link rel="manifest" href="nazna.dev.webmanifest" />
-          <link rel="preconnect" href="//fonts.gstatic.com" />
-          <link rel="stylesheet" href="//fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" />
+          <link rel="preconnect" href="https://fonts.gstatic.com" />
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" />
         </Head>
         <body>
           <noscript>You need to enable JavaScript to run this app.</noscript>

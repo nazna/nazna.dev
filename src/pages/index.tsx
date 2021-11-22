@@ -4,10 +4,10 @@ import { Social } from '../components/social'
 
 export default function Index() {
   return (
-    <div>
+    <>
       <Header />
       <Profile />
       <Social />
-    </div>
+    </>
   )
 }

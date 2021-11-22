@@ -6,14 +6,10 @@ export function Profile() {
       <h1 className={styles.sparkle}>
         Hello~
         <br />
-        I'm naoya.
+        I&#39;m naoya.
       </h1>
       <section className={styles.description}>
-        <p>
-          Web application engineer in Japan.
-          <br />
-          &mdash; also a gamer, reader and sleeper.
-        </p>
+        <p>Web application engineer in Japan.</p>
       </section>
     </main>
   )
