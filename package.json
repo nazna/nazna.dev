@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@types/node": "17.0.5",
-    "@types/react": "17.0.37",
+    "@types/react": "17.0.38",
     "prettier": "2.5.1",
     "prettier-plugin-organize-imports": "2.3.4",
     "prettier-plugin-packagejson": "2.2.15",
