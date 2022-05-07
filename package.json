@@ -11,8 +11,8 @@
     "build": "eleventy --config=.eleventy.cjs",
     "prebuild": "node -e 'fs.rmSync(`dist`, {recursive:true, force:true})'",
     "lint": "npm run eslint && npm run prettier",
-    "eslint": "eslint --ignore-path .gitignore --fix .",
-    "prettier": "prettier --ignore-path .gitignore --write --list-different ."
+    "eslint": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern --fix .",
+    "prettier": "prettier --ignore-path .gitignore --list-different --write ."
   },
   "dependencies": {
     "@11ty/eleventy": "1.0.1",
