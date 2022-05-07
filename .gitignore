@@ -1,18 +1,8 @@
-# macos
+# macOS
 .DS_Store
 
-# node.js
+# Node.js
 node_modules
-npm-debug.log*
 
-# typescript
-tsconfig.tsbuildinfo
-
-# next.js
-.next
-out
-
-# firebase
-.firebase
-.firebaserc
-firebase-debug.log*
+# Misc
+dist
