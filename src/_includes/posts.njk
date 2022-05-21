@@ -1,0 +1,8 @@
+<section>
+  {% set posts = collections.publish %}
+  <ol>
+    {% for post in posts | reverse %}
+      <li>{{ post.data.title }}</li>
+    {% endfor %}
+  </ol>
+</section>

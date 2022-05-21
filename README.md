@@ -2,6 +2,11 @@
 
 > A website about nazna
 
+## Todos
+
+- [ ] textlint を導入する
+- [ ] Table of contents を実装する
+
 ## References & Thanks
 
 - [Eleventy](https://www.11ty.dev/)
