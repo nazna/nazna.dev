@@ -1,33 +1,30 @@
+import type { ReactNode } from 'react'
 import { Footer } from '../components/footer.js'
 import { Header } from '../components/header.js'
 import { Time } from '../components/time.js'
-import type { Content } from '../scripts/lib.js'
 
-interface IndexProps {
-  contents: Content[]
+export interface PostProps {
+  title: string
+  publishedAt: string
+  body: ReactNode
 }
 
-export const Index = ({ contents }: IndexProps) => (
+export const Post = ({ title, publishedAt, body }: PostProps) => (
   <html lang="ja">
     <head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       <link rel="stylesheet" type="text/css" href="/style.css" />
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      <title>nazna.dev</title>
+      <title>{title}</title>
     </head>
     <body>
       <Header />
       <main>
         <section>
-          <ol>
-            {contents.map((content) => (
-              <li key={content.filename}>
-                <Time publishedAt={content.publishedAt} />
-                <a href={`/posts/${content.filename}`}>{content.title}</a>
-              </li>
-            ))}
-          </ol>
+          <Time publishedAt={publishedAt} />
+          <h1>{title}</h1>
+          {body}
         </section>
       </main>
       <Footer />

@@ -1,33 +1,23 @@
 import { Footer } from '../components/footer.js'
 import { Header } from '../components/header.js'
-import { Time } from '../components/time.js'
-import type { Content } from '../scripts/lib.js'
 
-interface IndexProps {
-  contents: Content[]
-}
-
-export const Index = ({ contents }: IndexProps) => (
+export const Error404 = () => (
   <html lang="ja">
     <head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       <link rel="stylesheet" type="text/css" href="/style.css" />
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      <title>nazna.dev</title>
+      <title>ページが見つかりません</title>
     </head>
     <body>
       <Header />
       <main>
         <section>
-          <ol>
-            {contents.map((content) => (
-              <li key={content.filename}>
-                <Time publishedAt={content.publishedAt} />
-                <a href={`/posts/${content.filename}`}>{content.title}</a>
-              </li>
-            ))}
-          </ol>
+          <figure>
+            <img src="/404.jpg" alt="404 Not Found" />
+            <figcaption>ページが見つかりません</figcaption>
+          </figure>
         </section>
       </main>
       <Footer />

@@ -3,18 +3,18 @@ import { Header } from '../components/header.js'
 import { Time } from '../components/time.js'
 import type { Content } from '../scripts/lib.js'
 
-interface IndexProps {
+interface PostsProps {
   contents: Content[]
 }
 
-export const Index = ({ contents }: IndexProps) => (
+export const Posts = ({ contents }: PostsProps) => (
   <html lang="ja">
     <head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
       <link rel="stylesheet" type="text/css" href="/style.css" />
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-      <title>nazna.dev</title>
+      <title>すべての投稿</title>
     </head>
     <body>
       <Header />

@@ -1,16 +1,14 @@
 {
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": true,
-    "source.fixAll": true
-  },
+  "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.rulers": [120],
+  "eslint.format.enable": false,
   "search.exclude": {
-    "**/.next": true,
+    "package-lock.json": true,
     "**/node_modules": true,
-    "package-lock.json": true
+    "**/dist": true
   },
   "typescript.preferences.importModuleSpecifier": "relative",
-  "typescript.tsdk": "node_modules/typescript/lib"
+  "typescript.tsdk": "./node_modules/typescript/lib"
 }
