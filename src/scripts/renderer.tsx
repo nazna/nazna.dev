@@ -1,3 +1,4 @@
+import { Feed } from 'feed'
 import { writeFile } from 'node:fs/promises'
 import { renderToStaticMarkup } from 'react-dom/server'
 import { Error404 } from '../pages/404.js'
@@ -26,4 +27,29 @@ export const renderPost = async (destinationPath: string, { title, publishedAt, 
 export const renderError404 = async (destinationPath: string) => {
   const html = renderToStaticMarkup(<Error404 />)
   await writeFile(destinationPath, patchHtml(html))
+}
+
+export const renderAtom = async (destinationPath: string, contents: Content[]) => {
+  const feed = new Feed({
+    title: 'nazna.dev',
+    description: 'A website about nazna',
+    id: 'https://nazna.dev',
+    link: 'https://nazna.dev',
+    language: 'ja',
+    image: 'https://nazna.dev/favicon.svg',
+    copyright: '© 2022 Naoya Yamashita',
+    updated: new Date(),
+  })
+
+  contents.map((content) => {
+    feed.addItem({
+      title: content.title,
+      id: `https://nazna.dev/posts/${content.filename}`,
+      link: `https://nazna.dev/posts/${content.filename}`,
+      description: content.description,
+      date: new Date(content.publishedAt),
+    })
+  })
+
+  await writeFile(destinationPath, feed.atom1())
 }

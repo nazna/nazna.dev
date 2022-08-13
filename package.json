@@ -6,7 +6,7 @@
   "description": "A website about nazna",
   "author": "nazna <naznagg@gmail.com> (https://nazna.dev)",
   "scripts": {
-    "dev": "nodemon --quiet & wrangler pages dev ./dist",
+    "dev": "NODE_ENV=development npm run build & wrangler pages dev ./dist",
     "build": "ts-node-esm ./src/main.ts",
     "publish": "wrangler pages publish ./dist",
     "lint": "npm run typecheck && npm run eslint && npm run prettier",
@@ -15,7 +15,7 @@
     "prettier": "prettier --ignore-path .gitignore --list-different --write ."
   },
   "dependencies": {
-    "@markdoc/markdoc": "0.1.4",
+    "@markdoc/markdoc": "0.1.5",
     "feed": "4.2.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -23,14 +23,13 @@
     "yaml": "2.1.1"
   },
   "devDependencies": {
-    "@types/node": "18.7.2",
+    "@types/node": "18.7.3",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
     "@typescript-eslint/eslint-plugin": "5.33.0",
     "@typescript-eslint/parser": "5.33.0",
     "eslint": "8.21.0",
     "eslint-config-prettier": "8.5.0",
-    "nodemon": "2.0.19",
     "postcss": "8.4.16",
     "prettier": "2.7.1",
     "prettier-plugin-css-order": "1.3.0",
@@ -40,14 +39,6 @@
   "engines": {
     "node": "18.x",
     "npm": "8.x"
-  },
-  "nodemonConfig": {
-    "watch": [
-      "./src",
-      "./public"
-    ],
-    "ext": "ts,tsx,md,css,svg",
-    "exec": "NODE_ENV=development ts-node-esm ./src/main.ts"
   },
   "eslintConfig": {
     "root": true,

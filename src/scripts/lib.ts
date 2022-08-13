@@ -6,8 +6,9 @@ import { parse } from 'yaml'
 import type { PostProps } from '../pages/post.js'
 
 export interface Content extends PostProps {
-  filename: string
   draft: boolean
+  filename: string
+  description: string
 }
 
 export const isDevelopmentMode = () => process.env['NODE_ENV'] === 'development'
@@ -33,9 +34,12 @@ export const loadContents = async (postsDir: string): Promise<Content[]> => {
     contents.push({
       title: info['title'],
       publishedAt: info['publishedAt'],
+      body,
       draft: info['draft'],
       filename: basename(filename, extname(filename)),
-      body,
+      description:
+        ast.children.find((c) => c.type === 'paragraph')?.children[0]?.children[0]?.attributes['content'] ||
+        info['title'],
     })
   }
 

@@ -1,7 +1,7 @@
 import { cp, readdir } from 'node:fs/promises'
 import { resolve } from 'node:path'
 import { loadContents } from './lib.js'
-import { renderError404, renderIndex, renderPost, renderPosts } from './renderer.js'
+import { renderAtom, renderError404, renderIndex, renderPost, renderPosts } from './renderer.js'
 
 export const buildAssets = async (assetsDir: string, destinationDir: string) => {
   const filenames = await readdir(assetsDir)
@@ -21,4 +21,6 @@ export const buildPages = async (sourceDir: string, destinationDir: string) => {
   for (const content of contents) {
     await renderPost(resolve(destinationDir, 'posts', `${content.filename}.html`), content)
   }
+
+  await renderAtom(resolve(destinationDir, 'feed.xml'), contents)
 }
