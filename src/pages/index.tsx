@@ -1,10 +1,10 @@
-import { Footer } from '../components/footer.js'
-import { Header } from '../components/header.js'
-import { Time } from '../components/time.js'
-import type { Content } from '../scripts/lib.js'
+import { Footer } from '../components/footer.js';
+import { Header } from '../components/header.js';
+import { Time } from '../components/time.js';
+import type { Content } from '../scripts/lib.js';
 
 interface IndexProps {
-  contents: Content[]
+  contents: Content[];
 }
 
 export const Index = ({ contents }: IndexProps) => (
@@ -12,6 +12,7 @@ export const Index = ({ contents }: IndexProps) => (
     <head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+      <meta name="description" content="A website about nazna" />
       <link rel="stylesheet" type="text/css" href="/style.css" />
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <title>nazna.dev</title>
@@ -33,4 +34,4 @@ export const Index = ({ contents }: IndexProps) => (
       <Footer />
     </body>
   </html>
-)
+);

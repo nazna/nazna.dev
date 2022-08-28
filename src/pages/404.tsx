@@ -1,11 +1,12 @@
-import { Footer } from '../components/footer.js'
-import { Header } from '../components/header.js'
+import { Footer } from '../components/footer.js';
+import { Header } from '../components/header.js';
 
 export const Error404 = () => (
   <html lang="ja">
     <head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+      <meta name="description" content="A website about nazna" />
       <link rel="stylesheet" type="text/css" href="/style.css" />
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <title>ページが見つかりません</title>
@@ -23,4 +24,4 @@ export const Error404 = () => (
       <Footer />
     </body>
   </html>
-)
+);

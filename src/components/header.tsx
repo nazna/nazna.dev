@@ -4,4 +4,4 @@ export const Header = () => (
       <a href="/">nazna.dev</a>
     </nav>
   </header>
-)
+);

@@ -1,12 +1,12 @@
-import type { ReactNode } from 'react'
-import { Footer } from '../components/footer.js'
-import { Header } from '../components/header.js'
-import { Time } from '../components/time.js'
+import type { ReactNode } from 'react';
+import { Footer } from '../components/footer.js';
+import { Header } from '../components/header.js';
+import { Time } from '../components/time.js';
 
 export interface PostProps {
-  title: string
-  publishedAt: string
-  body: ReactNode
+  title: string;
+  publishedAt: string;
+  body: ReactNode;
 }
 
 export const Post = ({ title, publishedAt, body }: PostProps) => (
@@ -14,6 +14,7 @@ export const Post = ({ title, publishedAt, body }: PostProps) => (
     <head>
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+      <meta name="description" content="A website about nazna" />
       <link rel="stylesheet" type="text/css" href="/style.css" />
       <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
       <title>{title}</title>
@@ -30,4 +31,4 @@ export const Post = ({ title, publishedAt, body }: PostProps) => (
       <Footer />
     </body>
   </html>
-)
+);

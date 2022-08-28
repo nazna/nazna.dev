@@ -61,9 +61,14 @@ ul {
   list-style: none;
 }
 
+li:not(:first-child) {
+  padding-top: 0.5rem;
+}
+
 img {
   display: block;
   max-width: 100%;
+  height: auto;
   margin: 2rem auto;
 }
 
@@ -163,6 +168,16 @@ main > section > article ul {
 main > section > article p {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+main > section > article figure img {
+  margin-bottom: 0.5rem;
+}
+
+main > section > article figcaption {
+  color: var(--color-text-overlay);
+  font-size: 0.8rem;
+  text-align: center;
 }
 
 main > section > article hr {
