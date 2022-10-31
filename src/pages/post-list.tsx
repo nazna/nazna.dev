@@ -4,14 +4,14 @@ import { Header } from '../components/header.js';
 import { Time } from '../components/time.js';
 import type { Content } from '../lib/contents.mjs';
 
-interface IndexProps {
+interface PostsProps {
   contents: Content[];
 }
 
-export function Index(props: IndexProps) {
+export function PostList(props: PostsProps) {
   return (
     <html lang="ja">
-      <Head title="nazna.dev" />
+      <Head title="すべての投稿" />
       <body>
         <Header />
         <main>
@@ -19,8 +19,10 @@ export function Index(props: IndexProps) {
             <ol>
               {props.contents.map((content) => (
                 <li key={content.slug}>
-                  <Time publishedAt={content.publishedAt} />
-                  <a href={`/posts/${content.slug}`}>{content.title}</a>
+                  <article>
+                    <Time publishedAt={content.publishedAt} />
+                    <a href={`/posts/${content.slug}`}>{content.title}</a>
+                  </article>
                 </li>
               ))}
             </ol>
