@@ -30,7 +30,7 @@
 
 html {
   overflow-y: scroll;
-  font-size: calc(1rem + 0.5vw);
+  font-size: calc(1.2rem + 0.5vw);
 }
 
 html:focus-within {
@@ -98,6 +98,8 @@ blockquote {
 
 time {
   display: block;
+  color: var(--color-text-overlay);
+  font-size: smaller;
 }
 
 hr {
@@ -136,6 +138,16 @@ body > header > nav > a {
   text-decoration-color: var(--color-text-overlay);
 }
 
+body > main > section {
+  margin-bottom: 6rem;
+}
+
+body > main > section > ol {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
 body > footer > nav > ul {
   padding-left: 1.5rem;
   list-style-type: disc;
@@ -152,12 +164,6 @@ body > footer > nav > ul a {
 
 .post > header > h1 {
   font-size: 1.6rem;
-}
-
-.post > header > time {
-  display: block;
-  color: var(--color-text-overlay);
-  font-size: smaller;
 }
 
 .post p {

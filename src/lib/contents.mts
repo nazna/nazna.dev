@@ -41,5 +41,5 @@ export async function getContents(sourceDir: string) {
     })
   );
 
-  return contents;
+  return process.env['NODE_ENV'] === 'development' ? contents : contents.filter((c) => !c.draft);
 }
