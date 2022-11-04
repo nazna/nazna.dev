@@ -9,7 +9,7 @@
     "dev": "NODE_ENV=development npm run build && npm run start",
     "build": "ts-node ./src/main.mts",
     "start": "wrangler pages dev ./dist --compatibility-date=$(date '+%Y-%m-%d')",
-    "publish": "wrangler pages publish ./dist --compatibility-date=$(date '+%Y-%m-%d')",
+    "publish": "wrangler pages publish ./dist",
     "lint": "npm run typecheck && npm run eslint && npm run prettier",
     "typecheck": "tsc --noEmit",
     "eslint": "eslint --ignore-path .gitignore --no-error-on-unmatched-pattern --fix .",
