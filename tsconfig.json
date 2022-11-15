@@ -25,7 +25,8 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "esnext"
+    "target": "esnext",
+    "types": ["@cloudflare/workers-types"]
   },
   "include": ["./src/**/*"],
   "ts-node": {
