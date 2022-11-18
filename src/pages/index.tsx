@@ -15,6 +15,7 @@ export function Index(props: IndexProps) {
       <body>
         <Header />
         <main>
+          <img src="/img/foo-bar" />
           <section>
             <ol>
               {props.contents.map((content) => (

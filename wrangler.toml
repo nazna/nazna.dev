@@ -1,0 +1,6 @@
+compatibility_date  = "2022-11-19"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "nazna-dev"
+preview_bucket_name = "nazna-dev"
