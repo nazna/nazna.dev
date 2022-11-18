@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "NODE_ENV=development npm run build && npm run start",
     "build": "ts-node ./src/main.mts",
-    "start": "wrangler pages dev ./dist --compatibility-date=$(date '+%Y-%m-%d')",
+    "start": "wrangler pages dev ./dist --r2=BUCKET --compatibility-date=$(date '+%Y-%m-%d')",
     "publish": "wrangler pages publish ./dist",
     "lint": "npm run typecheck && npm run eslint && npm run prettier",
     "typecheck": "tsc --noEmit",
