@@ -2,9 +2,19 @@ interface Env {
   BUCKET: R2Bucket;
 }
 
-export const onRequestGet: PagesFunction<Env> = async ({ request, env, params }): Promise<Response> => {
+export const onRequestGet: PagesFunction<Env> = async ({ request, env, params, waitUntil }): Promise<Response> => {
   if (!request.headers.get('referer')) {
     return new Response('Forbidden', { status: 403 });
+  }
+
+  const cache = await caches.open('nazna.dev:cache');
+
+  const cacheKey = new Request(request.url, request);
+  const cached = await cache.match(cacheKey);
+
+  if (cached) {
+    console.log(`Cached: ${cacheKey}`);
+    return cached;
   }
 
   const key = params['key'];
@@ -16,7 +26,12 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env, params })
 
   const headers = new Headers();
   obj.writeHttpMetadata(headers);
-  headers.set('etag', obj.httpEtag);
+  headers.append('ETag', obj.httpEtag);
+  headers.append('Cache-Control', 'max-age=2592000');
 
-  return new Response(obj.body, { headers });
+  const response = new Response(obj.body, { headers });
+
+  waitUntil(cache.put(cacheKey, response.clone()));
+
+  return response;
 };
