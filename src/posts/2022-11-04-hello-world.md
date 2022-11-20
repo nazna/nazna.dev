@@ -4,7 +4,12 @@ publishedAt: 2022-11-04
 draft: false
 ---
 
-![Photo by Nick Morrison on Unsplash](https://source.unsplash.com/FHnnjk1Yj7Y/1920x1080 'Photo by Nick Morrison on Unsplash')
+![2000x1000:eager](/img/2022-11-04-head 'Photo by Nick Morrison on Unsplash')
 
-いつか作ろうと思ってなかなか公開するところまでたどり着いてなかったのですが、ちょっと時間ができたのでブログとして作り直しました。  
+いつか作ろうと思ってなかなか公開するところまでたどり着いてなかったのですが、ちょっと時間ができたのでブログとして作り直しました。
+
 あまり気合を入れずにゆるく読んだ本のこととか、気になってる技術とかをメモがてら残していこうかなと思います。
+
+![2000x1000](/img/2022-11-04-v1 '記念撮影 v1')
+
+以前の v1 のときのキャプチャもせっかくなので残しておきます。

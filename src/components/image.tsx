@@ -1,10 +1,9 @@
-interface ImageProps {
+export interface ImageProps {
   src: string;
-  alt: string;
   title: string;
-  width: number;
-  height: number;
-  loading?: 'eager' | 'lazy';
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | undefined;
 }
 
 export function Image(props: ImageProps) {
@@ -12,7 +11,7 @@ export function Image(props: ImageProps) {
     <figure>
       <img
         src={props.src}
-        alt={props.alt}
+        alt={props.title}
         width={props.width}
         height={props.height}
         loading={props.loading}

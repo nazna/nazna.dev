@@ -2,17 +2,12 @@ interface Env {
   BUCKET: R2Bucket;
 }
 
-export const onRequestGet: PagesFunction<Env> = async (context): Promise<Response> => {
-  const request: Request = context.request;
-  const env: Env = context.env;
-
+export const onRequestGet: PagesFunction<Env> = async ({ request, env, params }): Promise<Response> => {
   if (!request.headers.get('referer')) {
     return new Response('Forbidden', { status: 403 });
   }
 
-  console.log(await env.BUCKET.list());
-
-  const key = context.params['key'];
+  const key = params['key'];
   const obj = await env.BUCKET.get(`${key}.jpg`);
 
   if (!obj) {

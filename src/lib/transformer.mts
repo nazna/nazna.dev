@@ -1,11 +1,7 @@
 import markdoc, { Config, Node } from '@markdoc/markdoc';
-import { imageSize } from 'image-size';
+import type { ImageProps } from '../components/image.js';
 
-interface Dimension {
-  width?: number | undefined;
-  height?: number | undefined;
-  loading?: 'eager' | 'lazy';
-}
+type Dimension = Pick<ImageProps, 'width' | 'height' | 'loading'>;
 
 function getImageNode(node: Node): markdoc.Node | undefined {
   if (
@@ -19,18 +15,18 @@ function getImageNode(node: Node): markdoc.Node | undefined {
   return undefined;
 }
 
-async function calculateImageSize(src: string): Promise<Dimension> {
-  if (!src) {
+async function parseImageSize(alt: string): Promise<Dimension> {
+  if (!alt) {
     return {};
   }
 
-  const response = await fetch(src);
-  const arrayBuffer = await response.arrayBuffer();
-  const buffer = Buffer.from(arrayBuffer);
+  const parsed = alt.split(/[x:]/);
 
-  const { width, height } = imageSize(buffer);
+  const width = Number(parsed[0]);
+  const height = Number(parsed[1]);
+  const loading = parsed[2] === 'eager' ? undefined : 'lazy';
 
-  return { width, height, loading: 'lazy' };
+  return { width, height, loading };
 }
 
 export const config: Config = {
@@ -41,7 +37,8 @@ export const config: Config = {
 
         if (imageNode) {
           const attributes = imageNode.transformAttributes(config);
-          const imageAttributes = await calculateImageSize(attributes['src']);
+          const imageAttributes = await parseImageSize(attributes['alt']);
+
           return new markdoc.Tag('Image', { ...attributes, ...imageAttributes });
         }
 
