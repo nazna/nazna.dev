@@ -13,8 +13,8 @@ export const onRequestGet: PagesFunction<Env> = async ({ request, env, params, w
   const cached = await cache.match(cacheKey);
 
   if (cached) {
-    console.log(`Cached: ${cacheKey}`);
-    return cached;
+    console.log(`Cache found. key=${cacheKey}`);
+    return new Response(cached.body, { status: 304 });
   }
 
   const key = params['key'];
