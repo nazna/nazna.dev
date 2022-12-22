@@ -16,6 +16,10 @@ export interface Content {
   draft: boolean;
 }
 
+function isDevelopmentMode(): boolean {
+  return process.env['NODE_ENV'] === 'development';
+}
+
 export async function getContents(sourceDir: string) {
   const targets = readdirSync(resolve(sourceDir, 'posts')).map((filename) => resolve(sourceDir, 'posts', filename));
 
@@ -41,5 +45,8 @@ export async function getContents(sourceDir: string) {
     })
   );
 
-  return process.env['NODE_ENV'] === 'development' ? contents : contents.filter((c) => !c.draft);
+  return contents
+    .filter((content) => isDevelopmentMode() || !content.draft)
+    .slice()
+    .sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
 }
