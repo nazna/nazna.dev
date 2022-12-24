@@ -1,7 +1,7 @@
 ---
 title: 2022年 振り返り
 publishedAt: 2022-12-24
-draft: true
+draft: false
 ---
 
 ![2000x1000:eager](/img/2022-12-24-head 'Photo by Jan Kopřiv on Unsplash')
