@@ -1,7 +1,7 @@
 import { cpSync, mkdirSync, readdirSync, rmSync } from 'node:fs';
 import { resolve } from 'node:path';
-import { getContents } from './lib/contents.mjs';
-import { renderAtom, renderError404, renderIndex, renderPost, renderPostList } from './lib/renderer.js';
+import { getContents } from './lib/contents.ts';
+import { renderAtom, renderError404, renderIndex, renderPost, renderPostList } from './lib/renderer.tsx';
 
 const sourceDir = resolve('./src');
 const assetsDir = resolve('./public');

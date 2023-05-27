@@ -1,11 +1,11 @@
 import { Feed } from 'feed';
 import { writeFileSync } from 'node:fs';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { Error404 } from '../pages/error-404.js';
-import { Index } from '../pages/index.js';
-import { PostList } from '../pages/post-list.js';
-import { Post } from '../pages/post.js';
-import type { Content } from './contents.mjs';
+import { Error404 } from '../pages/error-404.ts';
+import { Index } from '../pages/index.ts';
+import { PostList } from '../pages/post-list.ts';
+import { Post } from '../pages/post.ts';
+import type { Content } from './contents.ts';
 
 export const patch = (html: string): string => {
   return `<!DOCTYPE html>${html}`.replace(/(<meta charSet=.*?>)/gi, (match) => match.toLowerCase());

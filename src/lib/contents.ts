@@ -4,8 +4,8 @@ import { basename, extname, resolve } from 'node:path';
 import type { ReactElement, ReactNode } from 'react';
 import React from 'react';
 import { parse } from 'yaml';
-import { Image } from '../components/image.js';
-import { config } from './transformer.mjs';
+import { Image } from '../components/image.tsx';
+import { config } from './transformer.ts';
 
 export interface Content {
   slug: string;

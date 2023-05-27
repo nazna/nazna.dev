@@ -2,7 +2,7 @@ import { Footer } from '../components/footer.js';
 import { Head } from '../components/head.js';
 import { Header } from '../components/header.js';
 import { Time } from '../components/time.js';
-import type { Content } from '../lib/contents.mjs';
+import type { Content } from '../lib/contents.ts';
 
 interface PostsProps {
   contents: Content[];

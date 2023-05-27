@@ -1,9 +1,9 @@
-import markdoc, { Config, Node } from '@markdoc/markdoc';
-import type { ImageProps } from '../components/image.js';
+import markdoc from '@markdoc/markdoc';
+import type { ImageProps } from '../components/image.tsx';
 
 type Dimension = Pick<ImageProps, 'width' | 'height' | 'loading'>;
 
-function getImageNode(node: Node): markdoc.Node | undefined {
+function getImageNode(node: markdoc.Node): markdoc.Node | undefined {
   if (
     node.type === 'paragraph' &&
     node.children[0]?.type === 'inline' &&
@@ -29,7 +29,7 @@ async function parseImageSize(alt: string): Promise<Dimension> {
   return { width, height, loading };
 }
 
-export const config: Config = {
+export const config: markdoc.Config = {
   nodes: {
     paragraph: {
       async transform(node, config) {

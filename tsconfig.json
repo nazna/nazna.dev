@@ -1,17 +1,16 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
+    "allowImportingTsExtensions": true,
     "allowUnusedLabels": false,
     "allowUnreachableCode": false,
     "esModuleInterop": true,
     "exactOptionalPropertyTypes": true,
     "forceConsistentCasingInFileNames": true,
-    "importsNotUsedAsValues": "error",
-    "isolatedModules": true,
     "jsx": "react-jsx",
-    "lib": ["ESNext", "DOM"],
-    "module": "NodeNext",
-    "moduleResolution": "nodenext",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "noFallthroughCasesInSwitch": true,
     "noImplicitOverride": true,
     "noImplicitReturns": true,
@@ -25,12 +24,14 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "esnext"
+    "target": "ESNext",
+    "verbatimModuleSyntax": true
   },
   "include": ["./src/**/*"],
   "ts-node": {
     "esm": true,
     "swc": true,
-    "transpileOnly": true
+    "transpileOnly": true,
+    "experimentalSpecifierResolution": "node"
   }
 }
