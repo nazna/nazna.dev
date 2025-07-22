@@ -1,10 +1,10 @@
 import { Feed } from 'feed';
 import { writeFileSync } from 'node:fs';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { Error404 } from '../pages/error-404.ts';
-import { Index } from '../pages/index.ts';
-import { PostList } from '../pages/post-list.ts';
-import { Post } from '../pages/post.ts';
+import { Error404 } from '../pages/error-404.tsx';
+import { Index } from '../pages/index.tsx';
+import { PostList } from '../pages/post-list.tsx';
+import { Post } from '../pages/post.tsx';
 import type { Content } from './contents.ts';
 
 export const patch = (html: string): string => {
