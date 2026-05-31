@@ -1,208 +1,285 @@
-:root {
-  --color-text: #000;
-  --color-text-overlay: #333;
-  --color-text-anchor: #469ac4;
-  --color-text-visited: #24566f;
-  --color-background: #fff;
-  --color-background-overlay: #eee;
-}
+@layer base;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --color-text: #fbfbfb;
-    --color-text-overlay: #97989b;
-    --color-text-anchor: #469ac4;
-    --color-text-visited: #7ab6d4;
-    --color-background: #1f2023;
-    --color-background-overlay: #27292d;
+@layer base {
+  *,
+  *::after,
+  *::before {
+    box-sizing: border-box;
+  }
+
+  :where(:root) {
+    font-size: 20px;
+    font-family: sans-serif;
+    line-height: 1.5;
+    text-spacing-trim: trim-start;
+    text-autospace: normal;
+    line-break: strict;
+    overflow-wrap: anywhere;
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scrollbar-gutter: stable;
+  }
+
+  :where(:lang(ja)) {
+    font-kerning: none;
+  }
+
+  :where(body) {
+    margin: unset;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6, p, ul, ol, pre, figure, blockquote) {
+    margin-block: unset;
+  }
+
+  :where(h1, h2, h3, h4, h5, h6) {
+    font-kerning: normal;
+    font-feature-settings: 'palt';
+  }
+
+  :where(ul, ol) {
+    padding-inline-start: unset;
+    list-style-type: '';
+  }
+
+  :where(pre) {
+    padding-block: 0.2rem;
+    padding-inline: 0.4rem;
+    overflow-x: auto;
+    font-family: monospace;
+    text-autospace: no-autospace;
+    text-spacing-trim: space-all;
+  }
+
+  :where(img, picture, video) {
+    max-inline-size: 100%;
+    vertical-align: bottom;
+    block-size: auto;
+    outline: 3px solid oklch(0 0 0 / 0.1);
+    outline-offset: -3px;
+  }
+
+  :where(blockquote, figure) {
+    margin-inline: unset;
+  }
+
+  :where(time) {
+    display: block;
+    text-autospace: no-autospace;
   }
 }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  border-width: 0;
-  border-style: solid;
+@view-transition {
+  navigation: auto;
 }
 
-html {
-  overflow-y: scroll;
-  font-size: calc(1.2rem + 0.5vw);
-}
-
-html:focus-within {
-  scroll-behavior: smooth;
+:root {
+  --text: oklch(0.3171 0 0);
+  --sub-text: oklch(0.4855 0 0);
+  --body-background: oklch(0.9851 0 0);
+  --footer-background: oklch(0.97 0.003 265);
+  --primary: oklch(0.652 0.102 233);
+  --secondary: oklch(0.431 0.068 233);
+  --highlight: oklch(0.953 0.014 241);
+  --code: oklch(0.329 0.032 275);
+  --code-lang: oklch(0.5 0.02 240);
+  --blockquote: oklch(0.94 0.009 265);
 }
 
 body {
-  word-wrap: break-word;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  grid-template-columns: 100%;
-  min-height: 100vh;
-  background-color: var(--color-background);
-  color: var(--color-text);
-  line-height: 1.6;
-  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-  text-rendering: optimizeLegibility;
+  background-color: var(--body-background);
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--text);
+  margin-block-start: 2.4rem;
+  margin-block-end: 1rem;
+}
+
+p {
+  color: var(--text);
 }
 
 a {
-  color: var(--color-text-anchor);
-  text-decoration: underline;
-  text-decoration-color: var(--color-text-anchor);
+  color: var(--primary);
+  text-decoration-color: var(--primary);
   text-decoration-thickness: 1px;
 }
 
-a:where(:visited) {
-  color: var(--color-text-visited);
-  text-decoration-color: var(--color-text-visited);
-}
-
-ol,
-ul {
-  list-style: none;
-}
-
-li:not(:first-child) {
-  padding-top: 0.5rem;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  margin: 2rem auto;
-}
-
-pre,
-code {
-  padding: 0.2rem 0.4rem;
-  overflow-x: auto;
-  border-radius: 0.2rem;
-  background-color: var(--color-background);
-  font-size: 0.8rem;
-  line-height: 1;
-  font-family: Courier, monospace;
-}
-
-blockquote {
-  margin: 1rem 0;
-  padding-left: 1rem;
-  border-left: 0.25rem solid #eee;
-  color: #999;
+a:visited {
+  color: var(--secondary);
+  text-decoration-color: var(--secondary);
 }
 
 time {
-  display: block;
-  color: var(--color-text-overlay);
-  font-size: smaller;
+  color: var(--sub-text);
+  font-size: small;
 }
 
 hr {
   height: 0;
-  margin-top: 4rem;
-  margin-bottom: 4rem;
+  margin-block: 4rem;
   border-top-width: 1px;
-  color: var(--color-text-overlay);
+  color: var(--sub-text);
 }
 
-body > header,
-body > main,
-body > footer {
-  padding-right: 1rem;
-  padding-left: 1rem;
-  overflow-y: auto;
-  scrollbar-gutter: stable;
+body {
+  > main {
+    flex: 1;
+    padding-block-end: 3rem;
+  }
+
+  > header > *,
+  > main > *,
+  > footer > * {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+
+  > header > nav,
+  > footer > nav {
+    margin-block: 3rem;
+  }
+
+  > header > nav > a {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  > main > section > ol > li {
+    margin-block-start: 3rem;
+  }
+
+  > main > section > ol > li > a {
+    font-size: 1.4rem;
+  }
+
+  > main > article {
+    margin-block-start: 3rem;
+  }
+
+  > footer {
+    background-color: var(--footer-background);
+  }
+
+  > footer > nav > ul {
+    padding-inline-start: 1.5rem;
+    list-style-type: square;
+  }
+
+  > footer {
+    li:not(:first-child) {
+      padding-block-start: 0.5rem;
+    }
+  }
 }
 
-body > header,
-body > main {
-  background-color: var(--color-background-overlay);
-}
+article {
+  > time + h1 {
+    margin-block-start: 0;
+  }
 
-body > header > nav,
-body > main > section,
-body > footer > nav {
-  max-width: 56rem;
-  margin: 3rem auto;
-}
+  h1 {
+    margin-block-end: 3rem;
+  }
 
-body > header > nav > a {
-  color: var(--color-text);
-  font-weight: bold;
-  font-size: 1.2rem;
-  text-decoration-color: var(--color-text-overlay);
-}
+  p {
+    margin-block: 1rem;
+  }
 
-body > main > section {
-  margin-bottom: 6rem;
-}
+  ul,
+  ol {
+    padding-inline-start: 1.5rem;
+    list-style-type: square;
+  }
 
-body > main > section > ol {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
+  :not(pre) > code {
+    padding-block: 0.125rem;
+    padding-inline: 0.25rem;
+    background-color: var(--highlight);
+  }
 
-body > footer > nav > ul {
-  padding-left: 1.5rem;
-  list-style-type: disc;
-}
+  div:has(> pre) {
+    color: var(--code-lang);
+    background-color: var(--code);
+  }
 
-body > footer > nav > ul a {
-  color: var(--color-text);
-  text-decoration-color: var(--color-text-overlay);
-}
+  figure {
+    margin-block: 2rem;
+    margin-inline: 0;
+  }
 
-.post > header {
-  margin-bottom: 3rem;
-}
+  figcaption {
+    color: var(--sub-text);
+    font-size: small;
+    text-align: center;
+  }
 
-.post > header > h1 {
-  font-size: 1.6rem;
-}
+  blockquote {
+    padding-inline: 1rem;
+    border-inline-start: 0.25rem solid var(--blockquote);
+  }
 
-.post p {
-  margin: 1rem 0;
-}
+  time:hover::after {
+    content: attr(data-updated);
+    margin-inline-start: 1rem;
+  }
 
-.post a {
-  color: var(--color-text-anchor);
-  text-decoration-color: var(--color-text-anchor);
-}
+  h1::before {
+    content: '# ' / '';
+  }
 
-.post ol {
-  padding-left: 1.5rem;
-  list-style-type: number;
-}
+  h2::before {
+    content: '## ' / '';
+  }
 
-.post ul {
-  padding-left: 1.5rem;
-  list-style-type: disc;
-}
+  h3::before {
+    content: '### ' / '';
+  }
 
-.post h2 {
-  margin-top: 2rem;
-}
+  code:not(pre > code)::before,
+  code:not(pre > code)::after {
+    content: '`' / '';
+  }
 
-.post h3 {
-  margin-top: 1rem;
-}
+  strong::before,
+  strong::after {
+    content: '**' / '';
+  }
 
-.post figure {
-  margin: 2rem 0;
-}
+  em::before,
+  em::after {
+    content: '_' / '';
+  }
 
-.post figure img {
-  margin-bottom: 0.5rem;
-}
+  s::before,
+  s::after {
+    content: '~~' / '';
+  }
 
-.post figcaption {
-  color: var(--color-text-overlay);
-  font-size: 0.9rem;
-  text-align: center;
+  div:has(> pre)::before {
+    content: '```' attr(data-lang) '\A' / '';
+  }
+
+  div:has(> pre)::after {
+    content: '\A```' / '';
+  }
+
+  blockquote > p::before {
+    color: #ccc;
+    content: '> ' / '';
+  }
+
+  blockquote > footer::before {
+    content: '\2014' / '';
+  }
 }

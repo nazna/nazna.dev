@@ -1,39 +1,22 @@
-import { cpSync, mkdirSync, readdirSync, rmSync } from 'node:fs';
-import { resolve } from 'node:path';
-import { getContents } from './lib/contents.ts';
-import { renderAtom, renderError404, renderIndex, renderPost, renderPostList } from './lib/renderer.tsx';
+const IMAGE_PREFIX = '/images/';
 
-const sourceDir = resolve('./src');
-const assetsDir = resolve('./public');
-const destinationDir = resolve('./dist');
+export default {
+  async fetch(request, env) {
+    const url = new URL(request.url);
 
-function clean() {
-  rmSync(destinationDir, { recursive: true, force: true });
-  mkdirSync(resolve(destinationDir, 'posts'), { recursive: true });
-}
+    if (url.pathname.startsWith(IMAGE_PREFIX)) {
+      const key = url.pathname.slice(IMAGE_PREFIX.length);
+      const object = await env.STORAGE.get(key);
 
-function assets() {
-  const filenames = readdirSync(assetsDir);
+      if (!object) {
+        return new Response('404 Not Found.', { status: 404 });
+      }
 
-  for (const filename of filenames) {
-    cpSync(resolve(assetsDir, filename), resolve(destinationDir, filename));
-  }
-}
+      return new Response(object.body, {
+        headers: { 'Content-Type': object.httpMetadata?.contentType ?? 'application/octet-stream' },
+      });
+    }
 
-async function build() {
-  const contents = await getContents(sourceDir);
-
-  renderIndex(resolve(destinationDir, 'index.html'), contents.slice(0, 5));
-  renderPostList(resolve(destinationDir, 'posts.html'), contents);
-  renderError404(resolve(destinationDir, '404.html'));
-
-  contents.forEach((content) => {
-    renderPost(resolve(destinationDir, 'posts', `${content.slug}.html`), content);
-  });
-
-  renderAtom(resolve(destinationDir, 'atom.xml'), contents);
-}
-
-clean();
-assets();
-build();
+    return env.ASSETS.fetch(request);
+  },
+} satisfies ExportedHandler<Env>;

@@ -1,13 +1,22 @@
-interface TimeProps {
-  publishedAt: string;
+interface Props {
+  createdAt: Temporal.Instant;
+  updatedAt: Temporal.Instant;
 }
 
-export function Time(props: TimeProps) {
+const WEEKDAYS = ['日', '月', '火', '水', '木', '金', '土'];
+
+function formatToJapaneseDate(instant: Temporal.Instant): string {
+  const { year, month, day, dayOfWeek } = instant.toZonedDateTimeISO('Asia/Tokyo');
+  return `${year}年${month}月${day}日(${WEEKDAYS[dayOfWeek]})`;
+}
+
+export function Time(props: Props) {
   return (
-    <time dateTime={props.publishedAt}>
-      {new Intl.DateTimeFormat('ja-JP', { dateStyle: 'full' })
-        .format(new Date(props.publishedAt))
-        .replace(/(.)曜日$/, '($1)')}
+    <time
+      datetime={props.createdAt.toString({ timeZone: 'Asia/Tokyo' })}
+      data-updated={`更新日: ${formatToJapaneseDate(props.updatedAt)}`}
+    >
+      {formatToJapaneseDate(props.createdAt)}
     </time>
   );
 }

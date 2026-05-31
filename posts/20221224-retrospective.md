@@ -1,10 +1,10 @@
 ---
 title: 2022年 振り返り
-publishedAt: 2022-12-24
+updatedAt: 2022-12-24T00:00:00.000+09:00
 draft: false
 ---
 
-![2000x1000:eager](/img/2022-12-24-head 'Photo by Jan Kopřiv on Unsplash')
+![2000x1000:eager](/images/20221224-head.avif 'Photo by Jan Kopřiv on Unsplash')
 
 こんにちは、2022 年もそろそろ終りが近づいてきました。  
 気づけば新卒エンジニアとして入社して 3 年目も後半となっていました。
@@ -31,7 +31,7 @@ draft: false
 この時期の残業はちょっとつらかったですね。
 夜遅くまで付き合っていただいた開発部長とメンバーには感謝しかありませんし、Zoom で雑談しながら作業するのは楽しかった思い出です。
 
-![2000x1000](/img/2022-12-24-change 'Photo by Javier Allegue Barros on Unsplash')
+![2000x1000](/images/20221224-change.avif 'Photo by Javier Allegue Barros on Unsplash')
 
 ## 2 年目 (2021 年)
 
@@ -48,7 +48,7 @@ GraphQL の運用は難しく(GraphQL に限りませんが...)、あれこれ�
 とある検索システムのリプレイスのような案件に携わったのですが、外部 PF とのメッセージキューでの接続、全文検索エンジン、何もわからないデータベースと SQL、慣れない Java と課題だらけでしたが予定通りリリースできてほっとしたことを覚えています。
 複数システム間での連携などアーキテクチャ面でも学ぶことが多く、バックエンドの経験を積めてよかったです。
 
-![2000x1000](/img/2022-12-24-runner 'Photo by Bruno Nascimento on Unsplash')
+![2000x1000](/images/20221224-runner.avif 'Photo by Bruno Nascimento on Unsplash')
 
 ## 3 年目 (2022 年)
 

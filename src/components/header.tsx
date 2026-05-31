@@ -1,8 +1,10 @@
+import pkg from '../../package.json' with { type: 'json' };
+
 export function Header() {
   return (
     <header>
       <nav>
-        <a href="/">nazna.dev</a>
+        <a href="/">{pkg.name}</a>
       </nav>
     </header>
   );

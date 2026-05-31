@@ -1,6 +1,6 @@
 ---
 title: ブログについて
-publishedAt: 2022-01-01
+updatedAt: 2022-01-01T00:00:00.000+09:00
 draft: true
 ---
 
