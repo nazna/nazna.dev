@@ -27,6 +27,7 @@
 - updated_at を mtime を使うようにすると git clone とかで更新されてしまう
 - Shiki の pre 要素の親に div 要素が発生するのを消したい
 - Shiki の pre 要素直下の code 要素に class 属性で言語を指定できていない `class=language-typescript` のようにしたい
+- `extractDescription()` や `extractRelativeLinks()` にバグがあるかもしれない
 
 ## References
 
