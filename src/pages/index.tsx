@@ -21,7 +21,7 @@ export function render(_props: never) {
           <h1>
             Hello~
             <br />
-            I'm naoya.
+            I'm nazna.
           </h1>
           <section>
             <ol>
