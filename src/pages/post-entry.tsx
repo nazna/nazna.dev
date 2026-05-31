@@ -24,7 +24,7 @@ export function render(props: Props) {
       <Helmet
         title={`${post.title} - ${pkg.name}`}
         description={post.description}
-        url={`${pkg.homepage}/posts/$${props.slug}`}
+        url={`${pkg.homepage}/posts/${props.slug}`}
       />
       <body>
         <Header />

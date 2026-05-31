@@ -12,7 +12,9 @@ export default {
         return new Response('404 Not Found.', { status: 404 });
       }
 
-      return new Response(object.body);
+      return new Response(object.body, {
+        headers: { 'Content-Type': object.httpMetadata?.contentType ?? 'application/octet-stream' },
+      });
     }
 
     return env.ASSETS.fetch(request);

@@ -18,7 +18,7 @@ export const remarkShiki: Plugin<[], Root> = () => {
         return;
       }
 
-      const html = resolved.pop();
+      const html = resolved.shift();
 
       if (!html) {
         throw new Error('Invalid converted html resolved');
