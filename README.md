@@ -1,6 +1,6 @@
 # nazna.dev
 
-> A website about nazna
+> nazna's websit
 
 ## Rules
 
@@ -20,6 +20,7 @@
 - [Cloudflare Web Analytics](https://www.cloudflare.com/ja-jp/web-analytics/)を導入する
 - [OpenSearch](https://developer.mozilla.org/ja/docs/Web/OpenSearch)に対応する
 - [vercel/satori](https://github.com/vercel/satori)を検証する
+- [Standard.site](https://standard.site/)に対応する
 
 ## Notes
 

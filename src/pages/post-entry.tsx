@@ -1,3 +1,4 @@
+import pkg from '../../package.json' with { type: 'json' };
 import { Footer } from '../components/footer.tsx';
 import { Header } from '../components/header.tsx';
 import { Helmet } from '../components/helmet.tsx';
@@ -20,7 +21,11 @@ export function render(props: Props) {
 
   return (
     <html lang="ja">
-      <Helmet title={`${post.title} - nazna.dev`} description={post.description} />
+      <Helmet
+        title={`${post.title} - ${pkg.name}`}
+        description={post.description}
+        url={`${pkg.homepage}/posts/$${props.slug}`}
+      />
       <body>
         <Header />
         <main>

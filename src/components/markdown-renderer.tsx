@@ -1,4 +1,5 @@
 import type {
+  Break,
   Delete,
   Emphasis,
   Heading,
@@ -16,7 +17,7 @@ import type {
   Text,
 } from 'mdast';
 
-const INTERNAL_ORIGIN = 'https://nazna.dev';
+import pkg from '../../package.json' with { type: 'json' };
 
 export function MarkdownRenderer({ nodes }: { nodes: RootContent[] }) {
   return <NodesRenderer nodes={nodes} />;
@@ -34,7 +35,7 @@ function NodesRenderer({ nodes }: { nodes: RootContent[] }) {
       case 'nazna-shiki':
         return <NaznaShikiNode node={node} />;
       case 'break':
-        return <br />;
+        return <BreakNode node={node} />;
       case 'delete':
         return <DeleteNode node={node} />;
       case 'emphasis':
@@ -100,6 +101,10 @@ function NaznaShikiNode({ node }: { node: NaznaShiki }) {
   return <div data-lang={node.lang} dangerouslySetInnerHTML={{ __html: node.html }} />;
 }
 
+function BreakNode(_: { node: Break }) {
+  return <br />;
+}
+
 function DeleteNode({ node }: { node: Delete }) {
   return (
     <s>
@@ -140,8 +145,8 @@ function InlineCodeNode({ node }: { node: InlineCode }) {
 }
 
 function LinkNode({ node }: { node: Link }) {
-  const parsed = URL.parse(node.url, INTERNAL_ORIGIN);
-  const isInternal = parsed && parsed.origin === INTERNAL_ORIGIN;
+  const parsed = URL.parse(node.url, pkg.homepage);
+  const isInternal = parsed && parsed.origin === pkg.homepage;
 
   return (
     <a href={node.url} rel={isInternal ? undefined : 'noopener noreferrer'} target={isInternal ? undefined : '_blank'}>

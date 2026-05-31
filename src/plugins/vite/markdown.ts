@@ -8,6 +8,7 @@ import { visit, EXIT } from 'unist-util-visit';
 import type { Plugin } from 'vite';
 import { parse } from 'yaml';
 
+import pkg from '../../../package.json' with { type: 'json' };
 import { FrontmatterSchema, type Post, type Frontmatter } from '../../types.ts';
 import { remarkBlockquote } from '../remark/blockquote.ts';
 import { remarkImage } from '../remark/image.ts';
@@ -54,7 +55,7 @@ function extractDescription(mdast: Root): string {
     return undefined;
   });
 
-  return description ?? "nazna's website";
+  return description ?? pkg.description;
 }
 
 function extractInstantFromFileName(fileName: string): Temporal.Instant {

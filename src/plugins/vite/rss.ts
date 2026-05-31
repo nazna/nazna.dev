@@ -3,14 +3,13 @@ import { glob } from 'node:fs/promises';
 import { Feed } from 'feed';
 import { createServer, isRunnableDevEnvironment, type Plugin } from 'vite';
 
+import pkg from '../../../package.json' with { type: 'json' };
 import type { Post } from '../../types.ts';
 import { markdown } from './markdown.ts';
 
 interface MarkdownModule {
   default: Post;
 }
-
-const BASE_URL = 'https://nazna.dev';
 
 export function rss(): Plugin {
   return {
@@ -32,16 +31,16 @@ export function rss(): Plugin {
       }
 
       const feed = new Feed({
-        title: 'nazna.dev',
-        description: "nazna's website",
-        id: BASE_URL,
-        link: BASE_URL,
+        title: pkg.name,
+        description: pkg.description,
+        id: pkg.homepage,
+        link: pkg.homepage,
         language: 'ja',
         author: {
           name: 'nazna',
         },
         feedLinks: {
-          atom: `${BASE_URL}/atom.xml`,
+          atom: `${pkg.homepage}/atom.xml`,
         },
       });
 
@@ -59,8 +58,8 @@ export function rss(): Plugin {
         .forEach((post) =>
           feed.addItem({
             title: post.title,
-            link: `${BASE_URL}/posts/${post.slug}`,
-            id: `${BASE_URL}/posts/${post.slug}`,
+            link: `${pkg.homepage}/posts/${post.slug}`,
+            id: `${pkg.homepage}/posts/${post.slug}`,
             published: new Date(post.createdAt.epochMilliseconds),
             date: new Date(post.updatedAt.epochMilliseconds),
             description: post.description,

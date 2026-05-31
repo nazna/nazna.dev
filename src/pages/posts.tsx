@@ -1,3 +1,4 @@
+import pkg from '../../package.json' with { type: 'json' };
 import { Footer } from '../components/footer.tsx';
 import { Header } from '../components/header.tsx';
 import { Helmet } from '../components/helmet.tsx';
@@ -12,7 +13,7 @@ const posts = Object.values(modules)
 export function render(_props: never) {
   return (
     <html lang="ja">
-      <Helmet title="すべての記事 - nazna.dev" description="nazna's website" />
+      <Helmet title={`すべての記事 - ${pkg.name}`} description={pkg.description} url={`${pkg.homepage}/posts`} />
       <body>
         <Header />
         <main>
