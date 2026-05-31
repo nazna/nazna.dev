@@ -7,21 +7,15 @@ import type { Post } from '../types.ts';
 const modules = import.meta.glob<Post>('../../posts/*.md', { eager: true, import: 'default' });
 const posts = Object.values(modules)
   .filter((p) => import.meta.env.DEV || !p.draft)
-  .toReversed()
-  .slice(0, 3);
+  .toReversed();
 
 export function render(_props: never) {
   return (
     <html lang="ja">
-      <Helmet title="nazna.dev" description="nazna's website" />
+      <Helmet title="すべての記事 - nazna.dev" description="nazna's website" />
       <body>
         <Header />
         <main>
-          <h1>
-            Hello~
-            <br />
-            I'm naoya.
-          </h1>
           <section>
             <ol>
               {posts.map((post) => (

@@ -10,18 +10,26 @@ export function Footer() {
             <a href="/posts">すべての投稿</a>
           </li>
           <li>
-            <a href="https://twitter.com/naznagg" target="_blank" rel="noopener noreferrer">
-              Twitter
+            <a href="/atom.xml">RSS</a>
+          </li>
+          <li>
+            <a href="https://bsky.app/profile/naznagg.bsky.social" rel="noopener noreferrer" target="_blank">
+              Bluesky
             </a>
           </li>
           <li>
-            <a href="https://github.com/nazna" target="_blank" rel="noopener noreferrer">
+            <a href="https://x.com/naznagg" rel="noopener noreferrer" target="_blank">
+              X
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/nazna" rel="noopener noreferrer" target="_blank">
               GitHub
             </a>
           </li>
           <li>
-            <a href="https://nazna.dev/rss.xml" target="_blank" rel="noopener noreferrer">
-              RSS
+            <a href="https://www.linkedin.com/in/naznagg/" rel="noopener noreferrer" target="_blank">
+              LinkedIn
             </a>
           </li>
         </ul>

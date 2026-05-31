@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nazna-dev",
+  "compatibility_date": "2026-05-31",
+  "main": "./src/main.ts",
+  "assets": {
+    "directory": "./public",
+    "binding": "ASSETS",
+  },
+  "r2_buckets": [
+    {
+      "bucket_name": "nazna-dev",
+      "binding": "STORAGE",
+      "remote": true,
+    },
+  ],
+}

@@ -1,15 +1,15 @@
 ---
 title: Hello, world!
-publishedAt: 2022-11-04
+updatedAt: 2022-11-04T00:00:00.000+09:00
 draft: false
 ---
 
-![2000x1000:eager](/img/2022-11-04-head 'Photo by Nick Morrison on Unsplash')
+![2000x1000:eager](/images/20221104-head.avif 'Photo by Nick Morrison on Unsplash')
 
 いつか作ろうと思ってなかなか公開するところまでたどり着いてなかったのですが、ちょっと時間ができたのでブログとして作り直しました。
 
 あまり気合を入れずにゆるく読んだ本のこととか、気になってる技術とかをメモがてら残していこうかなと思います。
 
-![2000x1000](/img/2022-11-04-v1 '記念撮影 v1')
+![2000x1000](/images/20221104-v1.avif '記念撮影 v1')
 
 以前の v1 のときのキャプチャもせっかくなので残しておきます。

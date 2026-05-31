@@ -1,14 +1,11 @@
 {
-  "editor.codeActionsOnSave": ["source.fixAll", "source.organizeImports"],
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
-  "editor.rulers": [120],
-  "eslint.format.enable": false,
-  "search.exclude": {
-    "package-lock.json": true,
-    "**/node_modules": true,
-    "**/dist": true
+  "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "explicit"
   },
-  "typescript.preferences.importModuleSpecifier": "relative",
-  "typescript.tsdk": "./node_modules/typescript/lib"
+  "editor.defaultFormatter": "oxc.oxc-vscode",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "js/ts.preferences.importModuleSpecifier": "relative",
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "oxc.typeAware": true
 }
