@@ -28,9 +28,3 @@
 - Shiki の pre 要素の親に div 要素が発生するのを消したい
 - Shiki の pre 要素直下の code 要素に class 属性で言語を指定できていない `class=language-typescript` のようにしたい
 - `extractDescription()` や `extractRelativeLinks()` にバグがあるかもしれない
-
-## References
-
-- [react-markdown をやめて remark から自力でレンダリングするようにした話](https://blog.stin.ink/articles/replace-react-markdown-with-remark)
-- [JSX をテンプレートエンジンとして使い、Vite でビルドする](https://blog.sasakiy84.net/articles/jsx-as-a-template-with-vite/)
-- [画像を囲うボーダーの色を半透明にしてコンテンツに馴染みやすくする](https://yuheiy.com/blog/2026/semi-transparent-image-borders)
