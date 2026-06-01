@@ -11,6 +11,7 @@ export function Helmet(props: Props) {
       <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
       <title>{props.title}</title>
       <meta name="description" content={props.description} />
+      <meta name="theme-color" content="oklch(0.97 0.003 265)" />
       <meta name="og:type" content="blog" />
       <meta name="og:title" content={props.title} />
       <meta name="og:url" content={props.url} />
