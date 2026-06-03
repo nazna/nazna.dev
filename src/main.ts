@@ -2,6 +2,10 @@ const IMAGE_PREFIX = '/images/';
 
 export default {
   async fetch(request, env) {
+    if (!request.headers.get('referer')) {
+      return new Response('Forbidden', { status: 403 });
+    }
+
     const url = new URL(request.url);
 
     if (url.pathname.startsWith(IMAGE_PREFIX)) {

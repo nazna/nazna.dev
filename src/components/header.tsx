@@ -4,7 +4,9 @@ export function Header() {
   return (
     <header>
       <nav>
-        <a href="/">{pkg.name}</a>
+        <a href="/" class="google-sans">
+          {pkg.name}
+        </a>
       </nav>
     </header>
   );

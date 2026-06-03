@@ -36,6 +36,8 @@ export function rss(): Plugin {
         id: pkg.homepage,
         link: pkg.homepage,
         language: 'ja',
+        image: `${pkg.homepage}/favicon.svg`,
+        favicon: `${pkg.homepage}/favicon.svg`,
         author: {
           name: 'nazna',
         },

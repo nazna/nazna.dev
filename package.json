@@ -1,6 +1,6 @@
 {
   "name": "nazna.dev",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "private": true,
   "description": "nazna's website",
   "homepage": "https://nazna.dev",
@@ -20,12 +20,12 @@
     "generate-types": "wrangler types ./src/worker.d.ts"
   },
   "devDependencies": {
-    "@cloudflare/vite-plugin": "1.39.0",
+    "@cloudflare/vite-plugin": "1.39.1",
     "@types/mdast": "4.0.4",
     "@types/node": "25.9.1",
     "feed": "5.2.1",
-    "oxfmt": "0.52.0",
-    "oxlint": "1.67.0",
+    "oxfmt": "0.53.0",
+    "oxlint": "1.68.0",
     "preact": "10.29.2",
     "preact-render-to-string": "6.7.0",
     "remark-gfm": "4.0.1",
@@ -35,8 +35,8 @@
     "unified": "11.0.5",
     "unist-util-find-after": "5.0.0",
     "unist-util-visit": "5.1.0",
-    "vite": "8.0.14",
-    "wrangler": "4.95.0",
+    "vite": "8.0.16",
+    "wrangler": "4.96.0",
     "yaml": "2.9.0",
     "zod": "4.4.3"
   },

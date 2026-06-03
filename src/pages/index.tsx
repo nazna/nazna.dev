@@ -18,7 +18,7 @@ export function render(_props: never) {
       <body>
         <Header />
         <main>
-          <h1>
+          <h1 class="google-sans">
             Hello~
             <br />
             I'm nazna.
