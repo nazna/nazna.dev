@@ -15,6 +15,15 @@ export default {
     const cached = await cache.match(cacheKey);
 
     if (cached) {
+      const etag = request.headers.get('If-None-Match');
+
+      if (etag && etag === cached.headers.get('ETag')) {
+        return new Response(null, {
+          status: 304,
+          headers: cached.headers,
+        });
+      }
+
       return cached;
     }
 
