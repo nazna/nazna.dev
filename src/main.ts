@@ -1,3 +1,5 @@
+import { waitUntil } from 'cloudflare:workers';
+
 const IMAGE_PREFIX = '/images/';
 
 export default {
@@ -8,17 +10,32 @@ export default {
 
     const url = new URL(request.url);
 
+    const cache = caches.default;
+    const cacheKey = new Request(url.toString(), request);
+    const cached = await cache.match(cacheKey);
+
+    if (cached) {
+      return cached;
+    }
+
     if (url.pathname.startsWith(IMAGE_PREFIX)) {
       const key = url.pathname.slice(IMAGE_PREFIX.length);
       const object = await env.STORAGE.get(key);
 
       if (!object) {
-        return new Response('404 Not Found.', { status: 404 });
+        return new Response('Not Found', { status: 404 });
       }
 
-      return new Response(object.body, {
-        headers: { 'Content-Type': object.httpMetadata?.contentType ?? 'application/octet-stream' },
-      });
+      const headers = new Headers();
+      object.writeHttpMetadata(headers);
+      headers.set('ETag', object.httpEtag);
+      headers.append('Cache-Control', 's-maxage=10');
+
+      const response = new Response(object.body, { headers });
+
+      waitUntil(cache.put(cacheKey, response.clone()));
+
+      return response;
     }
 
     return env.ASSETS.fetch(request);
