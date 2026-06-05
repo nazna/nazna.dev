@@ -10,7 +10,7 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
-    "jsxImportSource": "preact",
+    "jsxImportSource": "hono/jsx",
     "lib": ["ESNext"],
     "module": "nodenext",
     "moduleResolution": "nodenext",

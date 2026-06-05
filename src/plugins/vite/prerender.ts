@@ -1,11 +1,10 @@
-import type { ComponentChild, FunctionComponent, VNode } from 'preact';
-import { renderToStringAsync } from 'preact-render-to-string';
+import type { JSXNode } from 'hono/jsx';
 import { createServer, isRunnableDevEnvironment, type Plugin } from 'vite';
 
 import { markdown } from './markdown.ts';
 
 interface RenderModule {
-  render: (props: { slug?: string }) => VNode<{ slug?: string }>;
+  render: (props: { slug?: string }) => JSXNode;
 }
 
 interface Route {
@@ -47,29 +46,29 @@ function buildOutputFileName(pathname: string): string {
   return pathname === '/' ? 'index.html' : `${pathname.slice(1)}.html`;
 }
 
-function isVNode(vnode: ComponentChild): vnode is VNode {
-  return vnode != null && typeof vnode === 'object' && 'type' in vnode;
+function isJSXNode(node: unknown): node is JSXNode {
+  return node != null && typeof node === 'object' && 'tag' in node;
 }
 
-function isFunctionVNode(node: VNode): node is VNode & { type: FunctionComponent } {
-  return typeof node.type === 'function';
+function isFunctionNode(node: JSXNode): node is JSXNode & { tag: (...args: unknown[]) => unknown } {
+  return typeof node.tag === 'function';
 }
 
-function extractRelativeLinks(vnode: VNode): string[] {
+function extractRelativeLinks(node: JSXNode): string[] {
   const links: string[] = [];
 
-  if (isFunctionVNode(vnode)) {
-    const child = vnode.type(vnode.props);
+  if (isFunctionNode(node)) {
+    const child = node.tag(node.props);
 
-    if (isVNode(child)) {
+    if (isJSXNode(child)) {
       links.push(...extractRelativeLinks(child));
     }
 
     return links;
   }
 
-  if (typeof vnode.type === 'string') {
-    const props = vnode.props as Record<string, unknown>;
+  if (typeof node.tag === 'string') {
+    const props = node.props as Record<string, unknown>;
     const href = props['href'];
 
     if (typeof href === 'string' && href.startsWith('/')) {
@@ -77,13 +76,9 @@ function extractRelativeLinks(vnode: VNode): string[] {
     }
   }
 
-  const children = vnode.props.children;
-
-  if (children != null) {
-    for (const child of Array.isArray(children) ? children : [children]) {
-      if (isVNode(child)) {
-        links.push(...extractRelativeLinks(child));
-      }
+  for (const child of node.children) {
+    if (isJSXNode(child)) {
+      links.push(...extractRelativeLinks(child));
     }
   }
 
@@ -130,7 +125,7 @@ export function prerender(): Plugin {
         const module = await server.environments.ssr.runner.import<RenderModule>(route.renderer);
 
         const node = module.render(route.params);
-        const html = await renderToStringAsync(node);
+        const html = await node.toString();
 
         for (const link of extractRelativeLinks(node)) {
           if (!visited.has(link) && !queue.includes(link)) {

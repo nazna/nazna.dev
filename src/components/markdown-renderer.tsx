@@ -24,44 +24,48 @@ export function MarkdownRenderer({ nodes }: { nodes: RootContent[] }) {
 }
 
 function NodesRenderer({ nodes }: { nodes: RootContent[] }) {
-  return nodes.map((node) => {
-    switch (node.type) {
-      case 'nazna-blockquote':
-        return <NaznaBlockquoteNode node={node} />;
-      case 'nazna-image':
-        return <NaznaImageNode node={node} />;
-      case 'nazna-section':
-        return <NaznaSectionNode node={node} />;
-      case 'nazna-shiki':
-        return <NaznaShikiNode node={node} />;
-      case 'break':
-        return <BreakNode node={node} />;
-      case 'delete':
-        return <DeleteNode node={node} />;
-      case 'emphasis':
-        return <EmphasisNode node={node} />;
-      case 'heading':
-        return <HeadingNode node={node} />;
-      case 'inlineCode':
-        return <InlineCodeNode node={node} />;
-      case 'link':
-        return <LinkNode node={node} />;
-      case 'list':
-        return <ListNode node={node} />;
-      case 'listItem':
-        return <ListItemNode node={node} />;
-      case 'paragraph':
-        return <ParagraphNode node={node} />;
-      case 'strong':
-        return <StrongNode node={node} />;
-      case 'text':
-        return <TextNode node={node} />;
-      case 'thematicBreak':
-        return <ThematicBreakNode />;
-      default:
-        throw new Error(`Unexpected node type: ${JSON.stringify(node.type)}`);
-    }
-  });
+  return (
+    <>
+      {nodes.map((node) => {
+        switch (node.type) {
+          case 'nazna-blockquote':
+            return <NaznaBlockquoteNode node={node} />;
+          case 'nazna-image':
+            return <NaznaImageNode node={node} />;
+          case 'nazna-section':
+            return <NaznaSectionNode node={node} />;
+          case 'nazna-shiki':
+            return <NaznaShikiNode node={node} />;
+          case 'break':
+            return <BreakNode node={node} />;
+          case 'delete':
+            return <DeleteNode node={node} />;
+          case 'emphasis':
+            return <EmphasisNode node={node} />;
+          case 'heading':
+            return <HeadingNode node={node} />;
+          case 'inlineCode':
+            return <InlineCodeNode node={node} />;
+          case 'link':
+            return <LinkNode node={node} />;
+          case 'list':
+            return <ListNode node={node} />;
+          case 'listItem':
+            return <ListItemNode node={node} />;
+          case 'paragraph':
+            return <ParagraphNode node={node} />;
+          case 'strong':
+            return <StrongNode node={node} />;
+          case 'text':
+            return <TextNode node={node} />;
+          case 'thematicBreak':
+            return <ThematicBreakNode />;
+          default:
+            throw new Error(`Unexpected node type: ${JSON.stringify(node.type)}`);
+        }
+      })}
+    </>
+  );
 }
 
 function NaznaBlockquoteNode({ node }: { node: NaznaBlockquote }) {
@@ -170,12 +174,14 @@ function ListNode({ node }: { node: List }) {
 function ListItemNode({ node }: { node: ListItem }) {
   return (
     <li>
-      {node.children.map((child) => {
-        if (child.type === 'paragraph') {
-          return <NodesRenderer nodes={child.children} />;
-        }
-        return <NodesRenderer nodes={[child]} />;
-      })}
+      <>
+        {node.children.map((child) => {
+          if (child.type === 'paragraph') {
+            return <NodesRenderer nodes={child.children} />;
+          }
+          return <NodesRenderer nodes={[child]} />;
+        })}
+      </>
     </li>
   );
 }
@@ -197,7 +203,7 @@ function StrongNode({ node }: { node: Strong }) {
 }
 
 function TextNode({ node }: { node: Text }) {
-  return node.value;
+  return <>{node.value}</>;
 }
 
 function ThematicBreakNode() {
