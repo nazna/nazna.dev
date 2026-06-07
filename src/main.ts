@@ -14,17 +14,19 @@ export default {
 
     if (url.pathname.startsWith(IMAGE_PREFIX)) {
       const cache = caches.default;
-      const cacheKey = new Request(url.toString(), request);
+      const cacheKey = new Request(url.toString(), { method: 'GET' });
       const cached = await cache.match(cacheKey);
 
       if (cached) {
         const etag = request.headers.get('If-None-Match');
+        const cachedEtag = cached.headers.get('ETag');
 
-        if (etag && etag === cached.headers.get('ETag')) {
-          return new Response(null, {
-            status: 304,
-            headers: cached.headers,
-          });
+        if (etag && cachedEtag && etag === cachedEtag) {
+          const headers = new Headers(cached.headers);
+          headers.delete('Content-Length');
+          headers.delete('Content-Encoding');
+
+          return new Response(null, { status: 304, headers });
         }
 
         return cached;
